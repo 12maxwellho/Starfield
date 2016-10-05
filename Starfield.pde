@@ -6,12 +6,12 @@ void setup()
 	size(500,500);
 	background(175,238,238);
 	bob = new NormalParticle();
-	stars = new Particle[10];
+	stars = new Particle[1000];
 	for(int i=0;i<stars.length;i++)
 	{
 		stars[i] = new NormalParticle();
 	}
-	for(int j=0;j<stars.length/15;j++)
+	for(int j=0;j<stars.length/10;j++)
 	{
 		stars[j] = new JumboParticle();
 	}
@@ -27,7 +27,7 @@ void draw()
 		stars[i].move();
 		stars[i].show();
 	}
-	if(((Math.abs(mouseX-((OddballParticle)stars[0]).myX)<50)&&mousePressed==true)&&((Math.abs(mouseY-((OddballParticle)stars[0]).myY)<50)&&mousePressed==true))
+	if(((Math.abs(mouseX-((OddballParticle)stars[0]).myX)<10)&&mousePressed==true)&&((Math.abs(mouseY-((OddballParticle)stars[0]).myY)<10)&&mousePressed==true))
 	{
 		check = 2;
 	}
@@ -35,7 +35,9 @@ void draw()
 	{
 		background(0);
 		textSize(30);
-		text("You win!",200,200);
+		textAlign(CENTER);
+		fill(175,238,238);
+		text("You win the match!",250,250);
 	}
 }
 class NormalParticle implements Particle
