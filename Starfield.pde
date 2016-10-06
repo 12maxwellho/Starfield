@@ -4,7 +4,7 @@ void setup()
 {
 	size(500,500);
 	background(175,238,238);
-	stars = new Particle[1400];
+	stars = new Particle[1700];
 	for(int i=0;i<stars.length;i++)
 	{
 		stars[i] = new NormalParticle();
@@ -62,6 +62,7 @@ class NormalParticle implements Particle
 	public void show()
 	{
 		fill(myColor);
+		noStroke();
 		ellipse((float)myX,(float)myY,15,15);
 	}
 }
@@ -107,6 +108,7 @@ class OddballParticle implements Particle
 	}
 	public void show()
 	{
+		stroke(0);
 		fill(255);
 		ellipse(myX-5,myY,10,2);
 		ellipse(myX+5,myY,10,2);
@@ -127,6 +129,7 @@ class JumboParticle extends NormalParticle
 	public void show()
 	{
 		fill(myColor);
+		noStroke();
 		ellipse((float)myX,(float)myY,25,25);
 	}
 }
