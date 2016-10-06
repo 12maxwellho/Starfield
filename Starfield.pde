@@ -1,11 +1,9 @@
-NormalParticle bob;
 Particle[] stars;
 int check = 1;
 void setup()
 {
 	size(500,500);
 	background(175,238,238);
-	bob = new NormalParticle();
 	stars = new Particle[1000];
 	for(int i=0;i<stars.length;i++)
 	{
@@ -20,14 +18,12 @@ void setup()
 void draw()
 {
 	background(175,238,238);
-	bob.move();
-	bob.show();
 	for(int i=0;i<stars.length;i++)
 	{	
 		stars[i].move();
 		stars[i].show();
 	}
-	if(((Math.abs(mouseX-((OddballParticle)stars[0]).myX)<10)&&mousePressed==true)&&((Math.abs(mouseY-((OddballParticle)stars[0]).myY)<10)&&mousePressed==true))
+	if(((Math.abs(mouseX-((OddballParticle)stars[0]).myX)<5)&&mousePressed==true)&&((Math.abs(mouseY-((OddballParticle)stars[0]).myY)<5)&&mousePressed==true))
 	{
 		check = 2;
 	}
@@ -56,6 +52,7 @@ class NormalParticle implements Particle
 	{
 		myX = myX+speed*Math.cos(theta);
 		myY = myY+speed*Math.sin(theta);
+		theta = theta + 0.002;
 		if((Math.abs(myX-250)>250)||(Math.abs(myY-250)>250))
 		{ 
  			speed=speed*-1; 
@@ -85,7 +82,7 @@ class OddballParticle implements Particle
 	{
 		if(myX>0 && myX<501)
  		{
- 			myX = myX + ((int)(Math.random()*15)-7);
+ 			myX = myX + ((int)(Math.random()*21)-10);
  		}
  		else if(myX>500)
  		{
@@ -97,7 +94,7 @@ class OddballParticle implements Particle
  		}
  		if(myY>0 && myY<501)
  		{
- 			myY = myY + ((int)(Math.random()*15)-7);
+ 			myY = myY + ((int)(Math.random()*21)-10);
  		}
  		else if(myY>500)
  		{
@@ -125,12 +122,12 @@ class JumboParticle extends NormalParticle
 		theta = Math.random()*2*Math.PI;
 		myX = 250;
 		myY = 250;
-		speed = (Math.random()*20)+0.1;
+		speed = (Math.random()*10)+0.1;
 	}
 	public void show()
 	{
 		fill(myColor);
-		ellipse((float)myX,(float)myY,30,30);
+		ellipse((float)myX,(float)myY,25,25);
 	}
 }
 
