@@ -4,7 +4,7 @@ void setup()
 {
 	size(500,500);
 	background(175,238,238);
-	stars = new Particle[1000];
+	stars = new Particle[1400];
 	for(int i=0;i<stars.length;i++)
 	{
 		stars[i] = new NormalParticle();
